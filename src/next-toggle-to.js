@@ -4,17 +4,16 @@
   var UNDEFINED = 'undefined';
 
   nx.toggleTo = function (inArray, inItem, inValue, inPath) {
-    var value = inValue || false;
     var idx = inArray.findIndex(function (item) {
       return typeof inPath === UNDEFINED
         ? inItem === item
         : nx.get(item, inPath) === nx.get(inItem, inPath);
     });
 
-    if (value) {
+    if (inValue) {
       inArray.push(inItem);
     } else {
-      if (idx !== -1 && !value) {
+      if (idx !== -1 && !inValue) {
         inArray.splice(idx, 1);
       }
     }

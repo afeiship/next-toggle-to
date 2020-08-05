@@ -2,8 +2,8 @@
  * name: @feizheng/next-toggle-to
  * description: Toggle to some value for next.
  * homepage: https://github.com/afeiship/next-toggle-to
- * version: 1.0.0
- * date: 2020-08-05T01:04:42.201Z
+ * version: 1.0.1
+ * date: 2020-08-05T01:26:45.147Z
  * license: MIT
  */
 
@@ -13,17 +13,16 @@
   var UNDEFINED = 'undefined';
 
   nx.toggleTo = function (inArray, inItem, inValue, inPath) {
-    var value = inValue || false;
     var idx = inArray.findIndex(function (item) {
       return typeof inPath === UNDEFINED
         ? inItem === item
         : nx.get(item, inPath) === nx.get(inItem, inPath);
     });
 
-    if (value) {
+    if (inValue) {
       inArray.push(inItem);
     } else {
-      if (idx !== -1 && !value) {
+      if (idx !== -1 && !inValue) {
         inArray.splice(idx, 1);
       }
     }
