@@ -1,15 +1,15 @@
 /*!
- * name: @feizheng/next-toggle-to
+ * name: @jswork/next-toggle-to
  * description: Toggle to some value for next.
  * homepage: https://github.com/afeiship/next-toggle-to
- * version: 1.0.1
- * date: 2020-08-05T01:26:45.147Z
+ * version: 1.0.0
+ * date: 2020-11-20 17:20:42
  * license: MIT
  */
 
 (function () {
   var global = global || this || window || Function('return this')();
-  var nx = global.nx || require('@feizheng/next-js-core2');
+  var nx = global.nx || require('@jswork/next');
   var UNDEFINED = 'undefined';
 
   nx.toggleTo = function (inArray, inItem, inValue, inPath) {
