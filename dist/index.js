@@ -3,7 +3,7 @@
  * description: Toggle to some value for next.
  * homepage: https://github.com/afeiship/next-toggle-to
  * version: 1.0.0
- * date: 2020-11-20 17:20:42
+ * date: 2020-11-20 17:21:35
  * license: MIT
  */
 
