@@ -1,36 +1,38 @@
 /*!
  * name: @jswork/next-toggle-to
  * description: Toggle to some value for next.
- * homepage: https://github.com/afeiship/next-toggle-to
+ * homepage: https://js.work
  * version: 1.0.0
- * date: 2020-11-20 17:21:35
+ * date: 2023-11-13 21:53:45
  * license: MIT
  */
 
-(function () {
-  var global = global || this || window || Function('return this')();
-  var nx = global.nx || require('@jswork/next');
-  var UNDEFINED = 'undefined';
+'use strict';
 
-  nx.toggleTo = function (inArray, inItem, inValue, inPath) {
-    var idx = inArray.findIndex(function (item) {
-      return typeof inPath === UNDEFINED
-        ? inItem === item
-        : nx.get(item, inPath) === nx.get(inItem, inPath);
-    });
-
-    if (inValue) {
-      inArray.push(inItem);
-    } else {
-      if (idx !== -1 && !inValue) {
-        inArray.splice(idx, 1);
-      }
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+exports['default'] = void 0;
+var _next = _interopRequireDefault(require('@jswork/next'));
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+_next['default'].toggleTo = function (inArray, inItem, inValue, inPath) {
+  var idx = inArray.findIndex(function (item) {
+    return typeof inPath === 'undefined'
+      ? inItem === item
+      : _next['default'].get(item, inPath) === _next['default'].get(inItem, inPath);
+  });
+  if (inValue) {
+    inArray.push(inItem);
+  } else {
+    if (idx !== -1 && !inValue) {
+      inArray.splice(idx, 1);
     }
-
-    return inArray;
-  };
-
-  if (typeof module !== 'undefined' && module.exports) {
-    module.exports = nx.toggleTo;
   }
-})();
+  return inArray;
+};
+if (typeof module !== 'undefined' && module.exports && typeof wx === 'undefined') {
+  module.exports = _next['default'].toggleTo;
+}
+var _default = (exports['default'] = _next['default'].toggleTo);
