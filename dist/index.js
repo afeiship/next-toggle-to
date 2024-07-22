@@ -2,8 +2,8 @@
  * name: @jswork/next-toggle-to
  * description: Toggle to some value for next.
  * homepage: https://js.work
- * version: 1.1.3
- * date: 2024-07-22 23:02:13
+ * version: 1.1.4
+ * date: 2024-07-22 23:09:57
  * license: MIT
  */
 
@@ -21,13 +21,16 @@ var defaults = {
   path: null,
   value: null
 };
+var getIdx = function getIdx(items, item, path) {
+  return typeof path === 'string'
+    ? items.findIndex(function (it) {
+        return _next['default'].get(it, path) === _next['default'].get(item, path);
+      })
+    : items.indexOf(item);
+};
 _next['default'].toggleTo = function (inArray, inItem, inOptions) {
   var options = _next['default'].mix(null, defaults, inOptions);
-  var idx = inArray.findIndex(function (item) {
-    return options.path === null
-      ? inItem === item
-      : _next['default'].get(item, options.path) === _next['default'].get(inItem, options.path);
-  });
+  var idx = getIdx(inArray, inItem, options.path);
   var has = idx === -1;
 
   // if no options
