@@ -1,14 +1,15 @@
 import nx from '@jswork/next';
 
 const defaults = { path: null, value: null };
+const getIdx = (items, item, path) => {
+  return typeof path === 'string'
+    ? items.findIndex((it) => nx.get(it, path) === nx.get(item, path))
+    : items.indexOf(item);
+};
 
 nx.toggleTo = function (inArray, inItem, inOptions) {
   const options = nx.mix(null, defaults, inOptions);
-  const idx = inArray.findIndex(function (item) {
-    return options.path === null
-      ? inItem === item
-      : nx.get(item, options.path) === nx.get(inItem, options.path);
-  });
+  const idx = getIdx(inArray, inItem, options.path);
   const has = idx === -1;
 
   // if no options
