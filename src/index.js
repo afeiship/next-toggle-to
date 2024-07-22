@@ -1,22 +1,19 @@
 import nx from '@jswork/next';
 
-const defaults = {
-  path: null,
-  value: null
-};
+const defaults = { path: null, value: null };
 
 nx.toggleTo = function (inArray, inItem, inOptions) {
-  var options = nx.mix(null, defaults, inOptions);
-  var idx = inArray.findIndex(function (item) {
+  const options = nx.mix(null, defaults, inOptions);
+  const idx = inArray.findIndex(function (item) {
     return options.path === null
       ? inItem === item
       : nx.get(item, options.path) === nx.get(inItem, options.path);
   });
-  var hasValue = idx === -1;
+  const has = idx === -1;
 
   // if no options
   if (typeof inOptions === 'undefined') {
-    if (hasValue) {
+    if (has) {
       inArray.push(inItem);
     } else {
       inArray.splice(idx, 1);
@@ -27,7 +24,7 @@ nx.toggleTo = function (inArray, inItem, inOptions) {
   if (options.value) {
     inArray.push(inItem);
   } else {
-    if (!hasValue && options.value === false) {
+    if (!has && options.value === false) {
       inArray.splice(idx, 1);
     }
   }
