@@ -1,3 +1,3 @@
 interface NxStatic {
-  toggleTo: (array: any[], item: any, value: boolean, path: string) => any[];
+  toggleTo: (array: any[], item: any, options?: any) => any[];
 }
