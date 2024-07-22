@@ -2,8 +2,8 @@
  * name: @jswork/next-toggle-to
  * description: Toggle to some value for next.
  * homepage: https://js.work
- * version: 1.1.2
- * date: 2024-07-22 23:00:46
+ * version: 1.1.3
+ * date: 2024-07-22 23:02:13
  * license: MIT
  */
 
@@ -28,11 +28,11 @@ _next['default'].toggleTo = function (inArray, inItem, inOptions) {
       ? inItem === item
       : _next['default'].get(item, options.path) === _next['default'].get(inItem, options.path);
   });
-  var hasValue = idx === -1;
+  var has = idx === -1;
 
   // if no options
   if (typeof inOptions === 'undefined') {
-    if (hasValue) {
+    if (has) {
       inArray.push(inItem);
     } else {
       inArray.splice(idx, 1);
@@ -42,7 +42,7 @@ _next['default'].toggleTo = function (inArray, inItem, inOptions) {
   if (options.value) {
     inArray.push(inItem);
   } else {
-    if (!hasValue && options.value === false) {
+    if (!has && options.value === false) {
       inArray.splice(idx, 1);
     }
   }
