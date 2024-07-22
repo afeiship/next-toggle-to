@@ -21,8 +21,9 @@ const items = [
   { value: 'de1', label: '使用余额xxx', price: '1000' },
   { value: 'de2', label: '使用余额yyy', price: '1000' }
 ];
+
 const target = { value: 'de1', label: '使用余额xxx', price: '1000' };
-const res = nx.toggleTo(items, target, false, 'value');
+const res = nx.toggleTo(items, target, { value: false, path: 'value'});
 
 /*
 [
