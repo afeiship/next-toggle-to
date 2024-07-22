@@ -2,8 +2,8 @@
  * name: @jswork/next-toggle-to
  * description: Toggle to some value for next.
  * homepage: https://js.work
- * version: 1.0.1
- * date: 2023-11-13 21:57:22
+ * version: 1.1.1
+ * date: 2024-07-22 22:51:58
  * license: MIT
  */
 
@@ -17,16 +17,32 @@ var _next = _interopRequireDefault(require('@jswork/next'));
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
-_next['default'].toggleTo = function (inArray, inItem, inValue, inPath) {
+var defaults = {
+  path: null,
+  value: null
+};
+_next['default'].toggleTo = function (inArray, inItem, inOptions) {
+  var options = _next['default'].mix(null, defaults, inOptions);
   var idx = inArray.findIndex(function (item) {
-    return typeof inPath === 'undefined'
+    return options.path === null
       ? inItem === item
-      : _next['default'].get(item, inPath) === _next['default'].get(inItem, inPath);
+      : _next['default'].get(item, options.path) === _next['default'].get(inItem, options.path);
   });
-  if (inValue) {
+  var hasValue = idx === -1;
+
+  // if no options
+  if (typeof inOptions === 'undefined') {
+    if (hasValue) {
+      inArray.push(inItem);
+    } else {
+      inArray.splice(idx, 1);
+    }
+    return inArray;
+  }
+  if (options.value) {
     inArray.push(inItem);
   } else {
-    if (idx !== -1 && !inValue) {
+    if (!hasValue && options.value === false) {
       inArray.splice(idx, 1);
     }
   }
