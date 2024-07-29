@@ -2,8 +2,8 @@
  * name: @jswork/next-toggle-to
  * description: Toggle to some value for next.
  * homepage: https://js.work
- * version: 1.1.4
- * date: 2024-07-22 23:09:57
+ * version: 1.1.5
+ * date: 2024-07-29 23:29:00
  * license: MIT
  */
 
